@@ -6,8 +6,10 @@ services:
     working_dir: /home/node/app
     environment:
       - NODE_ENV=production
+      - TZ=Asia/Shanghai
     volumes:
-      - ./:/home/node/app
-    expose:
-      - "8081"
-    command: "npm start"
+      - ./vol/app/gen-kapp-server:/home/node/app
+      - "/etc/localtime:/etc/localtime"
+    ports:
+     - "8081:3000"
+    command: " npm run dev"
